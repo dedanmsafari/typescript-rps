@@ -4,6 +4,14 @@ export enum HandOptions {
   scissors = "scissors",
 }
 
+export type GameActions = {
+  type: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
+  payload: {
+    playerHand: number;
+    runtime: boolean;
+  };
+};
+
 export type Options = {
   name: HandOptions;
   icon: React.JSX.Element;
@@ -19,7 +27,7 @@ type Results = {
   message: string;
 };
 
-export type InitialState = {
+export type OptionsState = {
   playerHand: number;
   computerHand: number;
   runTimer: boolean;
@@ -29,5 +37,6 @@ export type InitialState = {
 
 export type OptionsType = {
   options: Options[];
-  initialState: InitialState;
+  state: OptionsState;
+  dispatch: React.Dispatch<GameActions>;
 };
