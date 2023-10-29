@@ -1,15 +1,17 @@
-import "./App.css";
+import styles from "./App.module.css";
+import ChooseAndPlay from "./sections/ChooseAndPlay";
+import ScoreAndResults from "./sections/ScoreAndResults";
 
 function App() {
   return (
     <>
       <div className={styles.container}>
         <div className={styles.titleCtn}>
-          <h1>ROCK,PAPER,SCISSORS</h1>
-          <p>React Typescript Game!</p>
+          <h2>ROCK,PAPER,SCISSORS</h2>
+          <p>May the Best Hand Win!</p>
         </div>
-        {/* <ScoreAndResults />
-        <ChooseAndPlay /> */}
+        <ScoreAndResults />
+        <ChooseAndPlay />
       </div>
     </>
   );
