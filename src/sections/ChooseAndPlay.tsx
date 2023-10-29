@@ -9,7 +9,7 @@ const ChooseAndPlay = () => {
   return (
     <>
       <div className={styles.choiceBtnCtn}>
-        {Items.map((item) => (
+        {Items.options.map((item) => (
           <HandSelection key={item.name} name={item.name} icon={item.icon} />
         ))}
       </div>
