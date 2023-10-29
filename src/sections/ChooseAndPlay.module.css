@@ -1,0 +1,22 @@
+.choiceBtnCtn {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.playBtn {
+  background: linear-gradient(45deg, #59ff00, #00f7ff);
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 10px 30px;
+  margin-top: 50px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.playBtn:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
