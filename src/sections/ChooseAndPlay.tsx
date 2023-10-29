@@ -1,23 +1,17 @@
 import HandSelection from "../components/HandSelection";
 import styles from "./ChooseAndPlay.module.css";
 import Button from "../utils/component/Button.component";
-import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
+
+import { useHand } from "../context/options.context";
+
 const ChooseAndPlay = () => {
+  const Items = useHand();
   return (
     <>
       <div className={styles.choiceBtnCtn}>
-        <HandSelection
-          name="Rock"
-          icon={<FaHandRock size="3em" color="grey" />}
-        />
-        <HandSelection
-          name="Paper"
-          icon={<FaHandPaper size="3em" color="brown" />}
-        />
-        <HandSelection
-          name="Scissors"
-          icon={<FaHandScissors size="3em" color="orange" />}
-        />
+        {Items.map((item) => (
+          <HandSelection key={item.name} name={item.name} icon={item.icon} />
+        ))}
       </div>
       <Button className={styles.playBtn} name="play" />
     </>
