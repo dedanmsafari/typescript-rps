@@ -1,12 +1,8 @@
 import { PropsWithChildren } from "react";
 import { createContext } from "../utils/context";
 import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
-import {
-  Options,
-  HandOptions,
-  InitialState,
-  OptionsType,
-} from "../models/Options";
+import { Options, HandOptions, OptionsType } from "../models/Options";
+import { useOptions } from "../reducers/optionsReducer";
 
 const options: Options[] = [
   { name: HandOptions.rock, icon: <FaHandRock size="3em" color="grey" /> },
@@ -17,29 +13,18 @@ const options: Options[] = [
   },
 ];
 
-const initialState: InitialState = {
-  playerHand: 0,
-  computerHand: 0,
-  runTimer: false,
-  score: {
-    player: 0,
-    computer: 0,
-  },
-  results: {
-    winner: "",
-    message: "",
-  },
-};
-
 const [useContext, Provider] = createContext<OptionsType>();
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useHand = useContext;
 
 const OptionsProvider = ({ children }: PropsWithChildren) => {
+  const [state, dispatch] = useOptions();
+
   const value = {
     options,
-    initialState,
+    state,
+    dispatch,
   };
   return <Provider value={value}>{children}</Provider>;
 };
