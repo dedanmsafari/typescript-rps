@@ -1,5 +1,6 @@
 import HandSelection from "../components/HandSelection";
 import styles from "./ChooseAndPlay.module.css";
+import Button from "../utils/component/Button.component";
 import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
 const ChooseAndPlay = () => {
   return (
@@ -18,7 +19,7 @@ const ChooseAndPlay = () => {
           icon={<FaHandScissors size="3em" color="orange" />}
         />
       </div>
-      <button className={styles.playBtn}>play</button>
+      <Button className={styles.playBtn} name="play" />
     </>
   );
 };

@@ -1,8 +1,9 @@
+import React from "react";
 import styles from "./HandSelection.module.css";
 
 type HandProps = {
   name: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
 };
 
 const HandSelection = ({ name, icon }: HandProps) => {

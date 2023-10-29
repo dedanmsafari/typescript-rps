@@ -1,18 +1,19 @@
 import styles from "./App.module.css";
 import ChooseAndPlay from "./sections/ChooseAndPlay";
 import ScoreAndResults from "./sections/ScoreAndResults";
+import Box from "./utils/component/Box.component";
 
 function App() {
   return (
     <>
-      <div className={styles.container}>
+      <Box className={styles.container}>
         <div className={styles.titleCtn}>
-          <h2>ROCK,PAPER,SCISSORS</h2>
+          <Box as="h2">ROCK,PAPER,SCISSORS</Box>
           <p>May the Best Hand Win!</p>
         </div>
         <ScoreAndResults />
         <ChooseAndPlay />
-      </div>
+      </Box>
     </>
   );
 }
