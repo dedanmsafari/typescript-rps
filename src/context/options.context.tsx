@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 import { createContext } from "../utils/context";
 import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
 import { Options, HandOptions, OptionsType } from "../models/Options";
-import { useOptions } from "../reducers/optionsReducer";
+import useOptions from "../reducers/optionsReducer";
 
 const options: Options[] = [
   { name: HandOptions.rock, icon: <FaHandRock size="3em" color="grey" /> },

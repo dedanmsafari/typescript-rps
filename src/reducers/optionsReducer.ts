@@ -21,7 +21,7 @@ type OptionsReducerType = (
   action: GameActions
 ) => OptionsState;
 
-const OptionsReducer: OptionsReducerType = (state, action) => {
+const optionsReducer: OptionsReducerType = (state, action) => {
   if (action.type === HandOptions.rock) {
     return {
       ...state,
@@ -46,8 +46,8 @@ const OptionsReducer: OptionsReducerType = (state, action) => {
   return State;
 };
 
-export default OptionsReducer;
-
-export const useOptions = () => {
-  return useReducer(OptionsReducer, State);
+const useOptions = () => {
+  return useReducer(optionsReducer, State);
 };
+
+export default useOptions;
