@@ -15,6 +15,7 @@ export type GameActions = {
 export type Options = {
   name: HandOptions;
   icon: React.JSX.Element;
+  dispatch: GameActions;
 };
 
 type Score = {
