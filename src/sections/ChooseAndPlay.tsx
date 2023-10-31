@@ -5,12 +5,20 @@ import Button from "../utils/component/Button.component";
 import { useHand } from "../context/options.context";
 
 const ChooseAndPlay = () => {
-  const Items = useHand();
+  const { options, dispatch } = useHand();
+
   return (
     <>
       <div className={styles.choiceBtnCtn}>
-        {Items.options.map((item) => (
-          <HandSelection key={item.name} name={item.name} icon={item.icon} />
+        {options.map((item) => (
+          <HandSelection
+            key={item.name}
+            name={item.name}
+            icon={item.icon}
+            onClick={() => {
+              dispatch(item.dispatch);
+            }}
+          />
         ))}
       </div>
       <Button className={styles.playBtn} name="play" />
