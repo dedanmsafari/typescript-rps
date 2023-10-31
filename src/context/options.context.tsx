@@ -3,13 +3,27 @@ import { createContext } from "../utils/context";
 import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
 import { Options, HandOptions, OptionsType } from "../models/Options";
 import useOptions from "../reducers/optionsReducer";
+import {
+  RockOption,
+  PaperOption,
+  ScissorsOption,
+} from "../actions/OptionActions";
 
 const options: Options[] = [
-  { name: HandOptions.rock, icon: <FaHandRock size="3em" color="grey" /> },
-  { name: HandOptions.paper, icon: <FaHandPaper size="3em" color="brown" /> },
+  {
+    name: HandOptions.rock,
+    icon: <FaHandRock size="3em" color="grey" />,
+    dispatch: RockOption,
+  },
+  {
+    name: HandOptions.paper,
+    icon: <FaHandPaper size="3em" color="brown" />,
+    dispatch: PaperOption,
+  },
   {
     name: HandOptions.scissors,
     icon: <FaHandScissors size="3em" color="orange" />,
+    dispatch: ScissorsOption,
   },
 ];
 
