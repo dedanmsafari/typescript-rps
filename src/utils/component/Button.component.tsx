@@ -4,9 +4,17 @@ import clsx from "clsx";
 type ButtonProps = ComponentProps<"button"> & {
   name: string;
   variant?: string;
+  icon?: React.JSX.Element;
 };
 
-const Button = ({ name, className, variant, ...props }: ButtonProps) => {
+const Button = ({
+  name,
+  className,
+  icon,
+  variant,
+
+  ...props
+}: ButtonProps) => {
   return (
     <button
       className={clsx(
@@ -17,6 +25,7 @@ const Button = ({ name, className, variant, ...props }: ButtonProps) => {
       {...props}
     >
       {name}
+      {icon}
     </button>
   );
 };
