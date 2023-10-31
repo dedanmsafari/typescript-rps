@@ -1,6 +1,7 @@
 import styles from "./ScoreAndResults.module.css";
 
 const ScoreAndResults = () => {
+  // console.log("I am SCORE AND RESULTS");
   return (
     <>
       <div className={styles.scoreCtn}>
