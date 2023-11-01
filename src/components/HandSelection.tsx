@@ -8,7 +8,7 @@ type HandProps = {
   icon: React.JSX.Element;
   onClick: () => void;
 };
-//console.log("I am HAND SELECTION");
+
 const HandSelection = ({ name, icon, onClick }: HandProps) => {
   return (
     <Button
