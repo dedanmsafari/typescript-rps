@@ -43,7 +43,13 @@ const optionsReducer: OptionsReducerType = (state, action) => {
       runTime: action.payload.runtime,
     };
   }
-  return State;
+  return {
+    ...state,
+    results: {
+      winner: "error",
+      message: "We have an Error processing Options reducer",
+    },
+  };
 };
 
 const useOptions = () => {
