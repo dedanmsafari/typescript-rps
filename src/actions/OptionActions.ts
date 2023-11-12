@@ -21,14 +21,14 @@ export function createAction<T extends string, P>(type: T, payload: P) {
 }
 
 export const RockOption = createAction(HandOptions.rock, {
-  playerHand: 1,
+  playerHand: 0,
   runtime: true,
 });
 export const PaperOption = createAction(HandOptions.paper, {
-  playerHand: 2,
+  playerHand: 1,
   runtime: true,
 });
 export const ScissorsOption = createAction(HandOptions.scissors, {
-  playerHand: 3,
+  playerHand: 2,
   runtime: true,
 });
