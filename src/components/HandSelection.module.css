@@ -8,3 +8,7 @@
   justify-content: space-between;
   border: none;
 }
+
+.activeChoice {
+  background: linear-gradient(45deg, #eeff00, #00f7ff);
+}
