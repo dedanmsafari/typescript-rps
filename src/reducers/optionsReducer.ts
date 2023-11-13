@@ -1,27 +1,14 @@
 import { HandOptions } from "./../models/Options";
 import { OptionsState, GameActions } from "./../models/Options";
 import { useReducer } from "react";
-
-const State: OptionsState = {
-  playerHand: 0,
-  computerHand: 0,
-  runTimer: false,
-  score: {
-    player: 0,
-    computer: 0,
-  },
-  results: {
-    winner: "",
-    message: "",
-  },
-};
+import { State } from "./optionsInitialState";
 
 type OptionsReducerType = (
   state: OptionsState,
   action: GameActions
 ) => OptionsState;
 
-const optionsReducer: OptionsReducerType = (state, action) => {
+export const optionsReducer: OptionsReducerType = (state, action) => {
   if (action.type === HandOptions.rock) {
     return {
       ...state,
