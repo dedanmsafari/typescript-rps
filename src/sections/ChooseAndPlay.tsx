@@ -5,7 +5,7 @@ import Button from "../utils/component/Button.component";
 import { useHand } from "../context/options.context";
 
 const ChooseAndPlay = () => {
-  const { options } = useHand();
+  const { options, setActive } = useHand();
 
   return (
     <>
@@ -20,7 +20,11 @@ const ChooseAndPlay = () => {
           />
         ))}
       </div>
-      <Button className={styles.playBtn} name="play" />
+      <Button
+        className={styles.playBtn}
+        name="play"
+        onClick={() => setActive(false)}
+      />
     </>
   );
 };
