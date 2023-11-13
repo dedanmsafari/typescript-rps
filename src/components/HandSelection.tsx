@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./HandSelection.module.css";
 import Button from "../utils/component/Button.component";
@@ -13,11 +13,11 @@ type HandProps = {
 };
 
 const HandSelection = ({ name, icon, index, item }: HandProps) => {
-  const [active, setActive] = useState(false);
-  const { state, dispatch } = useHand();
+  const { state, dispatch, active, setActive } = useHand();
 
   const handleClick = () => {
     dispatch(item.dispatch);
+
     setActive(true);
   };
 
