@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { useState, PropsWithChildren } from "react";
 import { createContext } from "../utils/context";
 import { FaHandRock, FaHandPaper, FaHandScissors } from "react-icons/fa";
 import { Options, HandOptions, OptionsType } from "../models/Options";
@@ -34,11 +34,14 @@ export const useHand = useContext;
 
 const OptionsProvider = ({ children }: PropsWithChildren) => {
   const [state, dispatch] = useOptions();
+  const [active, setActive] = useState(false);
 
   const value = {
     options,
     state,
     dispatch,
+    active,
+    setActive,
   };
   return <Provider value={value}>{children}</Provider>;
 };
