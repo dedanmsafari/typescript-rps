@@ -40,4 +40,6 @@ export type OptionsType = {
   options: Options[];
   state: OptionsState;
   dispatch: React.Dispatch<GameActions>;
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
