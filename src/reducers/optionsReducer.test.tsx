@@ -10,7 +10,7 @@ import { ScissorsOption } from "../actions/OptionActions";
 vi.mock("./optionsInitialState", () => {
   return {
     State: {
-      playerHand: 0,
+      playerHand: 5,
       computerHand: 0,
       runTimer: false,
       score: {
