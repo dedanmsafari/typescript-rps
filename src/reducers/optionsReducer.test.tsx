@@ -34,7 +34,7 @@ const TestingComponent = ({ myOptions }: Testing) => {
 
   useEffect(() => {
     dispatch(myOptions);
-  }, []);
+  }, [myOptions]);
 
   return (
     <>
