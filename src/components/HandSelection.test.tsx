@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { HandOptions } from "../models/Options";
 import HandSelection from "./HandSelection";
 import { FaHandPaper } from "react-icons/fa";
-import { RockOption } from "../actions/OptionActions";
+import { PaperOption, RockOption } from "../actions/OptionActions";
 import userEvent from "@testing-library/user-event";
 import OptionsProvider from "../context/options.context";
 
@@ -23,7 +23,7 @@ describe("Hand Selection", () => {
         <HandSelection
           name="paper"
           icon={<FaHandPaper data-testid="paper" />}
-          index={2}
+          index={0}
           item={{
             name: HandOptions.rock,
             icon: <FaHandPaper size="3em" color="grey" />,
@@ -46,19 +46,19 @@ describe("Hand Selection", () => {
     render(
       <OptionsProvider>
         <HandSelection
-          name="paper"
+          name="paper11"
           icon={<FaHandPaper data-testid="paper" />}
-          index={0}
+          index={1}
           item={{
             name: HandOptions.rock,
             icon: <FaHandPaper size="3em" color="grey" />,
-            dispatch: RockOption,
+            dispatch: PaperOption,
           }}
         />
       </OptionsProvider>
     );
 
-    const hand = screen.getByText(/paper/i);
+    const hand = screen.getByText(/paper11/i);
 
     await user.click(hand);
 
