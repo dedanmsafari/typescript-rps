@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import OptionsProvider from "./options.context";
 import { useHand } from "./options.context";
 
-vi.mock("../reducers/optionsInitialState.ts", () => {
+vi.mock("../reducers/optionsInitialState", () => {
   return {
     State: {
       playerHand: 2,
