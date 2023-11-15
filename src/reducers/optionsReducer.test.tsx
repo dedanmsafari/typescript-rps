@@ -5,7 +5,7 @@ import { optionsReducer } from "./optionsReducer";
 import { useEffect, useReducer } from "react";
 import { State } from "./optionsInitialState";
 import { GameActions } from "../models/Options";
-import { ScissorsOption } from "../actions/OptionActions";
+import { ComputerOption, ScissorsOption } from "../actions/OptionActions";
 
 vi.mock("./optionsInitialState", () => {
   return {
@@ -39,6 +39,7 @@ const TestingComponent = ({ myOptions }: Testing) => {
   return (
     <>
       <p> playerhand: {state.playerHand}</p>
+      <p> computerhand: {state.computerHand}</p>
     </>
   );
 };
@@ -48,5 +49,26 @@ describe("Options Reducer", () => {
     render(<TestingComponent myOptions={ScissorsOption} />);
 
     expect(screen.getByText(/playerhand: 2/)).toBeInTheDocument();
+  });
+
+  it("Should update the optionsReducer with the correct computerHand", () => {
+    render(<TestingComponent myOptions={ComputerOption} />);
+
+    const computerHandElement = screen.getByText(/computerhand: \d+/i);
+
+    expect(computerHandElement).toBeInTheDocument();
+    const computerHandText = computerHandElement?.textContent;
+
+    if (computerHandText) {
+      const parsedComputerHand = parseInt(
+        computerHandText.split(":")[1].trim(),
+        10
+      );
+
+      expect(parsedComputerHand).toBeGreaterThanOrEqual(0);
+      expect(parsedComputerHand).toBeLessThanOrEqual(2);
+    } else {
+      expect(true).toBe(true);
+    }
   });
 });
