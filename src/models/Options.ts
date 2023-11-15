@@ -2,9 +2,10 @@ export enum HandOptions {
   rock = "rock",
   paper = "paper",
   scissors = "scissors",
+  computer = "computer",
 }
 
-export type GameActions = {
+type HandActions = {
   type: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
   payload: {
     playerHand: number;
@@ -12,10 +13,20 @@ export type GameActions = {
   };
 };
 
+export type ComputerActions = {
+  type: HandOptions.computer;
+  payload: () => {
+    computerHand: number;
+    runtime: boolean;
+  };
+};
+
+export type GameActions = HandActions | ComputerActions;
+
 export type Options = {
-  name: HandOptions;
+  name: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
   icon: React.JSX.Element;
-  dispatch: GameActions;
+  dispatch: HandActions;
 };
 
 type Score = {
