@@ -23,26 +23,29 @@ export function createAction<T extends string, P>(type: T, payload: P) {
 
 export const RockOption = createAction(HandOptions.rock as HandOptions.rock, {
   playerHand: 0,
-  runtime: true,
 });
 export const PaperOption = createAction(
   HandOptions.paper as HandOptions.paper,
   {
     playerHand: 1,
-    runtime: true,
   }
 );
 export const ScissorsOption = createAction(
   HandOptions.scissors as HandOptions.scissors,
   {
     playerHand: 2,
-    runtime: true,
+  }
+);
+export const RunTimerOption = createAction(
+  HandOptions.runTimer as HandOptions.runTimer,
+  {
+    runtimer: false,
   }
 );
 export const ComputerOption = createAction(
   HandOptions.computer as HandOptions.computer,
   () => ({
     computerHand: RandomValue(),
-    runtime: true,
+    runtimer: true,
   })
 );
