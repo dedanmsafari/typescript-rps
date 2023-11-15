@@ -30,6 +30,13 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
       runTime: action.payload.runtime,
     };
   }
+  if (action.type === HandOptions.computer) {
+    return {
+      ...state,
+      computerHand: action.payload().computerHand,
+      runTime: action.payload().runtime,
+    };
+  }
   return {
     ...state,
     results: {
