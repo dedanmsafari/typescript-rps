@@ -3,25 +3,31 @@ export enum HandOptions {
   paper = "paper",
   scissors = "scissors",
   computer = "computer",
+  runTimer = "runTimer",
 }
 
 type HandActions = {
   type: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
   payload: {
     playerHand: number;
-    runtime: boolean;
   };
 };
 
+export type TimerAction = {
+  type: HandOptions.runTimer;
+  payload: {
+    runtimer: boolean;
+  };
+};
 export type ComputerActions = {
   type: HandOptions.computer;
   payload: () => {
     computerHand: number;
-    runtime: boolean;
+    runtimer: boolean;
   };
 };
 
-export type GameActions = HandActions | ComputerActions;
+export type GameActions = HandActions | ComputerActions | TimerAction;
 
 export type Options = {
   name: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
