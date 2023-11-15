@@ -1,11 +1,16 @@
 import HandSelection from "../components/HandSelection";
 import styles from "./ChooseAndPlay.module.css";
 import Button from "../utils/component/Button.component";
-
 import { useHand } from "../context/options.context";
+import { ComputerOption } from "../actions/OptionActions";
 
 const ChooseAndPlay = () => {
-  const { options, setActive } = useHand();
+  const { options, setActive, dispatch } = useHand();
+
+  const Play = () => {
+    setActive(false);
+    dispatch(ComputerOption);
+  };
 
   return (
     <>
@@ -20,11 +25,7 @@ const ChooseAndPlay = () => {
           />
         ))}
       </div>
-      <Button
-        className={styles.playBtn}
-        name="play"
-        onClick={() => setActive(false)}
-      />
+      <Button className={styles.playBtn} name="play" onClick={Play} />
     </>
   );
 };
