@@ -13,28 +13,31 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     return {
       ...state,
       playerHand: action.payload.playerHand,
-      runTime: action.payload.runtime,
     };
   }
   if (action.type === HandOptions.paper) {
     return {
       ...state,
       playerHand: action.payload.playerHand,
-      runTime: action.payload.runtime,
     };
   }
   if (action.type === HandOptions.scissors) {
     return {
       ...state,
       playerHand: action.payload.playerHand,
-      runTime: action.payload.runtime,
     };
   }
   if (action.type === HandOptions.computer) {
     return {
       ...state,
       computerHand: action.payload().computerHand,
-      runTime: action.payload().runtime,
+      runTimer: action.payload().runtimer,
+    };
+  }
+  if (action.type === HandOptions.runTimer) {
+    return {
+      ...state,
+      runTimer: action.payload.runtimer,
     };
   }
   return {
