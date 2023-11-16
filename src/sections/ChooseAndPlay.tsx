@@ -5,8 +5,8 @@ import { useHand } from "../context/options.context";
 import { ComputerOption } from "../actions/OptionActions";
 
 const ChooseAndPlay = () => {
-  const { options, setActive, dispatch } = useHand();
-
+  const { options, setActive, dispatch, state } = useHand();
+  const { runTimer } = state;
   const Play = () => {
     setActive(false);
     dispatch(ComputerOption);
@@ -25,7 +25,12 @@ const ChooseAndPlay = () => {
           />
         ))}
       </div>
-      <Button className={styles.playBtn} name="play" onClick={Play} />
+      <Button
+        className={styles.playBtn}
+        name="play"
+        disabled={runTimer}
+        onClick={Play}
+      />
     </>
   );
 };

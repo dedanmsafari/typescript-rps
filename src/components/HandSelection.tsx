@@ -14,7 +14,7 @@ type HandProps = {
 
 const HandSelection = ({ name, icon, index, item }: HandProps) => {
   const { state, dispatch, active, setActive } = useHand();
-
+  const { runTimer } = state;
   const handleClick = () => {
     dispatch(item.dispatch);
 
@@ -25,6 +25,7 @@ const HandSelection = ({ name, icon, index, item }: HandProps) => {
     <Button
       name={name}
       icon={icon}
+      disabled={runTimer}
       className={`${styles.choiceBtn} ${
         active && index === state.playerHand ? styles.activeChoice : ""
       }`}
