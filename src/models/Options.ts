@@ -4,6 +4,9 @@ export enum HandOptions {
   scissors = "scissors",
   computer = "computer",
   runTimer = "runTimer",
+  computerWins = "computerWins",
+  playerWins = "playerWins",
+  draw = "draw",
 }
 
 type HandActions = {
@@ -27,7 +30,21 @@ export type ComputerActions = {
   };
 };
 
-export type GameActions = HandActions | ComputerActions | TimerAction;
+export type ResultsAction = {
+  type: HandOptions.computerWins | HandOptions.playerWins | HandOptions.draw;
+  payload: {
+    winner: string;
+    message: string;
+    computer: number;
+    player: number;
+  };
+};
+
+export type GameActions =
+  | HandActions
+  | ComputerActions
+  | TimerAction
+  | ResultsAction;
 
 export type Options = {
   name: HandOptions.rock | HandOptions.paper | HandOptions.scissors;
