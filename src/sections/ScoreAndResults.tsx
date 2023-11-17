@@ -11,6 +11,7 @@ const ScoreAndResults = () => {
     runTimer,
     playerHand,
     computerHand,
+    results: { message, winner },
     score: { player, computer },
   } = state;
 
@@ -54,14 +55,22 @@ const ScoreAndResults = () => {
         </div>
       </div>
       <div className={styles.results}>
-        <div className={styles.playerHand}>{!runTimer && playerHandIcon}</div>
+        <div className={styles.playerHand}>
+          {!runTimer && winner && playerHandIcon}
+          <br />
+          {!runTimer && winner && playerHandName}
+        </div>
         <div className={styles.midCol}>
           <p data-testid="timer" className={styles.timer}>
             {runTimer && timer}
           </p>
+          <p className={styles.resultWinner}>{!runTimer && winner}</p>
+          <p className={styles.resultMessage}>{!runTimer && message}</p>
         </div>
         <div className={styles.computerHand}>
-          {!runTimer && computerHandIcon}
+          {!runTimer && winner && computerHandIcon}
+          <br />
+          {!runTimer && winner && computerHandName}
         </div>
       </div>
     </>
