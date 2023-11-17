@@ -35,8 +35,6 @@ export type ResultsAction = {
   payload: {
     winner: string;
     message: string;
-    computer: number;
-    player: number;
   };
 };
 
