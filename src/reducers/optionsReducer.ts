@@ -44,8 +44,8 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     return {
       ...state,
       score: {
-        player: state.score.player + action.payload.player,
-        computer: state.score.computer + action.payload.computer,
+        ...state.score,
+        computer: state.score.computer + 1,
       },
       results: {
         winner: action.payload.winner,
@@ -57,8 +57,8 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     return {
       ...state,
       score: {
-        player: state.score.player + action.payload.player,
-        computer: state.score.computer + action.payload.computer,
+        ...state.score,
+        player: state.score.player + 1,
       },
       results: {
         winner: action.payload.winner,
@@ -70,8 +70,8 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     return {
       ...state,
       score: {
-        player: state.score.player + action.payload.player,
-        computer: state.score.computer + action.payload.computer,
+        player: state.score.player + 0.5,
+        computer: state.score.computer + 0.5,
       },
       results: {
         winner: action.payload.winner,
@@ -83,7 +83,7 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     ...state,
     results: {
       winner: "error",
-      message: "Internal Error,Computer is hurt :cry:",
+      message: "Internal Error,Computer is hurt",
     },
   };
 };
