@@ -1,7 +1,7 @@
 import { HandOptions } from "../models/Options";
-import RandomValue from "../utils/functions/randomVal";
+import randomValue from "../utils/functions/randomVal";
 
-type Action<T = string> = {
+type Action<T> = {
   type: T;
 };
 
@@ -15,7 +15,10 @@ export function createAction<T, P>(
   payload: P
 ): ActionWithPayload<T, P>;
 
-export function createAction<T>(type: T, payload: () => void): Action<T>;
+export function createAction<T extends string>(
+  type: T,
+  payload: void
+): Action<T>;
 
 export function createAction<T extends string, P>(type: T, payload: P) {
   return { type, payload };
@@ -45,7 +48,7 @@ export const RunTimerOption = createAction(
 export const ComputerOption = createAction(
   HandOptions.computer as HandOptions.computer,
   () => ({
-    computerHand: RandomValue(),
+    computerHand: randomValue(),
     runtimer: true,
   })
 );
@@ -53,24 +56,19 @@ export const ComputerOption = createAction(
 export const ComputerWinsOption = createAction(
   HandOptions.computerWins as HandOptions.computerWins,
   {
-    winner: "Computer",
-    message: "AI defeated Human,Mwahahahaha!",
-    computer: 1,
-    player: 0,
+    winner: "Computer Wins!",
+    message: "AI will rule you one day! ~ Computer",
   }
 );
 export const PlayerWinsOption = createAction(
   HandOptions.playerWins as HandOptions.playerWins,
   {
-    winner: "Player",
-    message: "Human defeated AI,There is still hope left",
-    computer: 0,
-    player: 1,
+    winner: "Player Wins!",
+    message: "There is still hope left for Humanity!",
   }
 );
 export const DrawOption = createAction(HandOptions.draw as HandOptions.draw, {
   winner: "Draw",
-  message: "What a Draw.Play Again!",
-  computer: 0.5,
-  player: 0.5,
+  message: "What a Draw. Play Again!",
 });
+export const ErrorOption = createAction("Error");
