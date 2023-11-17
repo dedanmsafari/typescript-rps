@@ -50,3 +50,12 @@
   color: transparent;
   animation: timerAnimation 3s infinite ease-in-out;
 }
+
+.resultWinner {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.resultMessage {
+  font-size: 15px;
+}
