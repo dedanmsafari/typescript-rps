@@ -12,17 +12,17 @@ import {
 const options: Options[] = [
   {
     name: HandOptions.rock,
-    icon: <FaHandRock size="3em" color="grey" />,
+    icon: <FaHandRock size="3em" color="grey" data-testid="rock" />,
     dispatch: RockOption,
   },
   {
     name: HandOptions.paper,
-    icon: <FaHandPaper size="3em" color="brown" />,
+    icon: <FaHandPaper size="3em" color="brown" data-testid="paper" />,
     dispatch: PaperOption,
   },
   {
     name: HandOptions.scissors,
-    icon: <FaHandScissors size="3em" color="orange" />,
+    icon: <FaHandScissors size="3em" color="orange" data-testid="scissors" />,
     dispatch: ScissorsOption,
   },
 ];
