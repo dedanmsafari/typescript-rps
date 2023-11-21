@@ -59,3 +59,31 @@
 .resultMessage {
   font-size: 15px;
 }
+
+.computerAnimation {
+  animation: computerTransform 0.8s ease-in-out infinite;
+}
+
+.playerAnimation {
+  animation: playerTransform 0.8s ease-in-out infinite;
+  /* animation-delay: 0.01s; */
+}
+
+@keyframes computerTransform {
+  0%,
+  100% {
+    transform: scaleY(-1) rotate(-80deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(-100deg);
+  }
+}
+@keyframes playerTransform {
+  0%,
+  100% {
+    transform: rotate(100deg);
+  }
+  50% {
+    transform: rotate(80deg);
+  }
+}
