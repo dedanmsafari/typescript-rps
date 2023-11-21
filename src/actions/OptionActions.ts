@@ -1,5 +1,5 @@
 import { HandOptions } from "../models/Options";
-import randomValue from "../utils/functions/randomVal";
+import { randomValue } from "../utils/functions/randomVal";
 
 type Action<T> = {
   type: T;
