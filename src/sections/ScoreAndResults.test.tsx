@@ -10,6 +10,14 @@ vi.mock("../utils/functions/randomVal", () => {
   };
 });
 
+vi.mock("./ScoreAndResults.module.css", () => {
+  return {
+    default: {
+      winnerAnimation: "winnerAnimation",
+    },
+  };
+});
+
 describe("Score And Result", () => {
   it("Should display 1 second after elapsed time of 2 seconds on the timer", () => {
     vi.useFakeTimers();
@@ -172,5 +180,85 @@ describe("Score And Result", () => {
     expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
 
     expect(screen.getAllByTestId(/rock/i)).toHaveLength(3);
+  });
+
+  it("Should display the computer and player hand shaking when playing", () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const player = screen.queryByTestId("playerShake");
+    const computer = screen.queryByTestId("computerShake");
+    expect(player).not.toBeInTheDocument();
+    expect(computer).not.toBeInTheDocument();
+
+    const rock = screen.getByText(/rock/i);
+
+    const play = screen.getByText("play");
+
+    fireEvent.click(rock);
+    fireEvent.click(play);
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    expect(screen.queryByTestId("playerShake")).toBeInTheDocument();
+    expect(screen.queryByTestId("computerShake")).toBeInTheDocument();
+    screen.debug();
+  });
+  it("Should display Player Winner Animation after timer ends", () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const paper = screen.getByText(/paper/i);
+
+    const play = screen.getByText("play");
+
+    fireEvent.click(paper);
+    fireEvent.click(play);
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId("playerBoxAnimation")).toHaveClass(
+      "winnerAnimation"
+    );
+    screen.debug();
+  });
+  it("Should display Computer Winner Animation after timer ends", () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const scissors = screen.getByText(/scissors/i);
+
+    const play = screen.getByText("play");
+
+    fireEvent.click(scissors);
+    fireEvent.click(play);
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId("computerBoxAnimation")).toHaveClass(
+      "winnerAnimation"
+    );
+    screen.debug();
   });
 });
