@@ -55,9 +55,16 @@ const ScoreAndResults = () => {
         </div>
       </div>
       <div className={styles.results}>
-        <div className={styles.playerHand}>
+        <div
+          data-testid="playerBoxAnimation"
+          className={`${styles.playerHand}  ${
+            winner === "Player Wins!" ? styles.winnerAnimation : ""
+          } `}
+        >
           {runTimer && (
-            <div className={styles.playerAnimation}>{options[0].icon}</div>
+            <div data-testid="playerShake" className={styles.playerAnimation}>
+              {options[0].icon}
+            </div>
           )}
           {!runTimer && winner && playerHandIcon}
           <br />
@@ -70,9 +77,19 @@ const ScoreAndResults = () => {
           <p className={styles.resultWinner}>{!runTimer && winner}</p>
           <p className={styles.resultMessage}>{!runTimer && message}</p>
         </div>
-        <div className={styles.computerHand}>
+        <div
+          data-testid="computerBoxAnimation"
+          className={`${styles.computerHand} ${
+            winner === "Computer Wins!" ? styles.winnerAnimation : ""
+          } `}
+        >
           {runTimer && (
-            <div className={styles.computerAnimation}>{options[0].icon}</div>
+            <div
+              data-testid="computerShake"
+              className={styles.computerAnimation}
+            >
+              {options[0].icon}
+            </div>
           )}
           {!runTimer && winner && computerHandIcon}
           <br />
