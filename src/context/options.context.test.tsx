@@ -23,14 +23,19 @@ vi.mock("../reducers/optionsInitialState", () => {
 
 describe("Options Context", () => {
   const TestComponent = () => {
-    const { state } = useHand();
-    return (
-      <>
-        <p>PlayerHand: {state.playerHand}</p>
-        <p>ComputerHand: {state.computerHand}</p>
-        <p>Winner: {state.results.winner}</p>
-      </>
-    );
+    try {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { state } = useHand();
+      return (
+        <>
+          <p>PlayerHand: {state.playerHand}</p>
+          <p>ComputerHand: {state.computerHand}</p>
+          <p>Winner: {state.results.winner}</p>
+        </>
+      );
+    } catch (error) {
+      return <p>{(error as Error).message}</p>;
+    }
   };
 
   it("should render component with the intial context values", () => {
@@ -43,5 +48,15 @@ describe("Options Context", () => {
     expect(screen.getByText(/PlayerHand: 2/i)).toBeInTheDocument();
     expect(screen.getByText(/ComputerHand: 1/i)).toBeInTheDocument();
     expect(screen.getByText(/Winner: Player 1/i)).toBeInTheDocument();
+  });
+  it("should throw an error if context is not used", () => {
+    render(<TestComponent />);
+
+    expect(
+      screen.getByText("Context can only be used inside a provider")
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/PlayerHand: 2/i)).toBeNull();
+    expect(screen.queryByText(/ComputerHand: 1/i)).toBeNull();
+    expect(screen.queryByText(/Winner: Player 1/i)).toBeNull();
   });
 });
