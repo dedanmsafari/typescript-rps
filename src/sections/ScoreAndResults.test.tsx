@@ -177,7 +177,6 @@ describe("Score And Result", () => {
     expect(screen.getByText(/Computer: 0.5/)).toBeInTheDocument();
 
     expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
-    expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
 
     expect(screen.getAllByTestId(/rock/i)).toHaveLength(3);
   });
@@ -260,5 +259,48 @@ describe("Score And Result", () => {
       "winnerAnimation"
     );
     screen.debug();
+  });
+  it("Should reset the screen upon a new selection", () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const scissors = screen.getByText(/scissors/i);
+
+    const play = screen.getByText("play");
+
+    fireEvent.click(scissors);
+    fireEvent.click(play);
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId("computerBoxAnimation")).toHaveClass(
+      "winnerAnimation"
+    );
+    expect(screen.getByText("Computer Wins!")).toBeInTheDocument();
+    expect(
+      screen.getByText("AI will rule you one day! ~ Computer")
+    ).toBeInTheDocument();
+    expect(screen.getAllByTestId(/rock/i)[0]).toBeVisible();
+
+    expect(screen.getAllByTestId(/rock/i)).toHaveLength(2);
+
+    screen.debug();
+
+    fireEvent.click(screen.getByText(/paper/i));
+    expect(screen.getByTestId("computerBoxAnimation")).not.toHaveClass(
+      "winnerAnimation"
+    );
+    expect(screen.queryByText("Computer Wins!")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("AI will rule you one day! ~ Computer")
+    ).not.toBeInTheDocument();
+    expect(screen.getAllByTestId(/rock/i)).toHaveLength(1);
   });
 });

@@ -13,18 +13,30 @@ export const optionsReducer: OptionsReducerType = (state, action) => {
     return {
       ...state,
       playerHand: action.payload.playerHand,
+      results: {
+        winner: "",
+        message: "",
+      },
     };
   }
   if (action.type === HandOptions.paper) {
     return {
       ...state,
       playerHand: action.payload.playerHand,
+      results: {
+        winner: "",
+        message: "",
+      },
     };
   }
   if (action.type === HandOptions.scissors) {
     return {
       ...state,
       playerHand: action.payload.playerHand,
+      results: {
+        winner: "",
+        message: "",
+      },
     };
   }
   if (action.type === HandOptions.computer) {
